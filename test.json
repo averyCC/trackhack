@@ -1,0 +1,14 @@
+{
+	"songone": {
+		"type": "spotify",
+		"uri": "spotify:track:4RL77hMWUq35NYnPLXBpih"
+	},
+	"songtwo": {
+		"type": "spotify", 
+		"uri": "spotify:track:4dI4oscajpdtjpg2dP1x28"
+	},
+	"songthree": {
+		"type": "spotify", 
+		"uri": "spotify:track:0MsB9M0OnluCzOVwqTW5ND"
+	}
+}
