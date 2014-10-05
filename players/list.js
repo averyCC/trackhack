@@ -29,6 +29,8 @@ playlist.playlistView.prototype.render = function() {
             case "soundcloud":
                 var soundcloudPlayer = new players.soundcloudPlayer(song.uri, this.id++);
                 soundcloudPlayer.appendTo(this.elem);
+                $(soundcloudPlayer.overlay).append(spans);
+
             default:
                 break;
         }

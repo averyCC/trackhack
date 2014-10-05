@@ -13,11 +13,11 @@ iframe {
     width: 100%;
     background-color: #BADA55;
     z-index: 2;
-    margin-bottom:2px;
+    margin-bottom:5px;
+    box-sizing: border-box;
 }
 
 .overlay .trackArtist {
-
     float:left;
     clear:both;
     font-style: italic;

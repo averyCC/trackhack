@@ -7,13 +7,12 @@ players.soundcloudPlayer = function(url, id) {
 	this._isPlaying = false;
 
 	// this.elem = '<iframe src="https://embed.spotify.com/?uri='+input+'&output=embed" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>'
-	this.elem = $('<iframe/>', {
+	this.elem = $('<object/>', {
 	    id: this._id,
-	    src: "http://w.soundcloud.com/player/?url="+url+"&show_artwork=false&liking=false&sharing=false&auto_play=false",
 	    width: "100%",
 	    height: "80px",
-	    frameborder:"no",
-	});
+		classid: "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+		});
 	this.overlay = $('<div/>',{
 		class: 'overlay'
 	} )
@@ -24,24 +23,48 @@ players.soundcloudPlayer = function(url, id) {
 
 players.soundcloudPlayer.prototype.appendTo = function(elem) {
 	$(elem).append(this.overlay);
-	$(this.overlay).text(this.url);
+	// $(this.overlay).text(this.url);
 	$(this.overlay).css('pointer-events', 'all');
 	$(elem).append(this.elem);
 	var that = this;
+	$(this.elem).html('<param name="allowscriptaccess" value="always"></param>' + 
+		'<embed allowscriptaccess="always" '+
+  				'height="80" '+
+  				'src="http://player.soundcloud.com/player.swf?url='+this.url+'&enable_api=true&object_id='+this._id +'" '+
+  				
+  				'type="application/x-shockwave-flash" width="100%" name="'+this._id +'"></embed>'
+  	);
 	$(this.overlay).click(
 		function() {
 			if (that._isPlaying) {that.pause();}
 			else {that.play();}
 	});
+	soundcloud.addEventListener('onPlayerReady', function(player, data) {
+  		console.log('player ready');
+  		that.dataLookup();
+	});
+
+}
+
+players.soundcloudPlayer.prototype.dataLookup = function() {
+	var that = this;
+	var data = soundcloud.getPlayer(this._id).api_getTrackDuration();
+	var time = Math.floor(data/ 60) + ':' + (data/60 %1 * 60).toFixed(0);
+		$(that.overlay).find('.timer').text(time);
+
+
+	data = soundcloud.getPlayer(this._id).api_getCurrentTrack();
+	$(that.overlay).find('.trackName').text(data.title);
+	$(that.overlay).find('.trackArtist').text(data.user.name);
+
+
 }
 
 players.soundcloudPlayer.prototype.play = function() {
-	var widget = SC.Widget(document.getElementById(this._id))
-	widget.play();
+	soundcloud.getPlayer(this._id).api_play()
 	this._isPlaying = true;
 }
 players.soundcloudPlayer.prototype.pause = function() {
-	var widget = SC.Widget(document.getElementById(this._id))
-	widget.pause();	
+	soundcloud.getPlayer(this._id).api_pause()
 	this._isPlaying = false;
 }
