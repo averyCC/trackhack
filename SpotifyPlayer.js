@@ -16,8 +16,7 @@ players.spotifyPlayer = function(url, id) {
 
 	});
 	this.overlay = $('<div/>',{
-		class: 'overlay',
-		style: "background-color=#ffffff"
+		class: 'overlay'
 	} )
 }
 

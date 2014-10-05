@@ -7,8 +7,12 @@
 		"type": "spotify", 
 		"uri": "spotify:track:4dI4oscajpdtjpg2dP1x28"
 	},
+	"songfour": {
+		"type": "youtube", 
+		"uri": "http://www.youtube.com/v/AbPED9bisSc"
+	},
 	"songthree": {
-		"type": "spotify", 
-		"uri": "spotify:track:0MsB9M0OnluCzOVwqTW5ND"
+		"type": "soundcloud",
+		"uri": "https://soundcloud.com/whitepandamusic/midnight-life"
 	}
 }
