@@ -5,19 +5,19 @@ players.spotifyPlayer = function(url, id) {
 	this.url = url;
 	this._id = id;
 
-	// this.elem = '<iframe src="https://embed.spotify.com/?uri='+input+'&output=embed" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>'
+
 	this.elem = $('<iframe/>', {
 	    id: this._id,
 	    src: 'https://embed.spotify.com/?uri=' + url + '&output=embed',
-	    width: "300",
-	    height: "80",
+	    width: "100%",
+	    height: "80px",
 	    frameborder:"0",
 	    allowtransparency:"true"
-
 	});
 	this.overlay = $('<div/>',{
 		class: 'overlay'
-	} )
+	} );
+	$(this.overlay).css('background-color', '#80bc42');
 }
 
 players.spotifyPlayer.prototype.appendTo = function(elem) {

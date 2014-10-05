@@ -11,8 +11,9 @@ players.youtubePlayer = function(url, id) {
 	    id: this._id,
 	    type: "application/x-shockwave-flash",
 	    // data: url + "?enablejsapi=1&amp;playerapiid=ytplayer&amp;version=3",
-	    width: "300",
-	    height: "80",
+
+	    width: "100%",
+	    height: "80px",
 	    frameborder:"0",
 	    allowtransparency:"true"
 	});
@@ -21,6 +22,7 @@ players.youtubePlayer = function(url, id) {
 	this.overlay = $('<div/>',{
 		class: 'overlay'
 	} )
+	$(this.overlay).css('background-color', '#c31320');
 
 	
 }

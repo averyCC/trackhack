@@ -10,13 +10,14 @@ players.soundcloudPlayer = function(url, id) {
 	this.elem = $('<iframe/>', {
 	    id: this._id,
 	    src: "http://w.soundcloud.com/player/?url="+url+"&show_artwork=false&liking=false&sharing=false&auto_play=false",
-	    width: "300",
-	    height: "80",
+	    width: "100%",
+	    height: "80px",
 	    frameborder:"no",
 	});
 	this.overlay = $('<div/>',{
 		class: 'overlay'
 	} )
+	$(this.overlay).css('background-color', '#f64c0e');
 
 	
 }
