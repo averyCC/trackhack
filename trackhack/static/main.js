@@ -1,7 +1,6 @@
  var playlist = window.playlist || {};
- var list;
- window.playlist = list;
-
+// = window.playlist = list;
+var list = window.playlist || {};
 
 
  function addSong() {

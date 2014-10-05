@@ -17,6 +17,7 @@ iframe {
     box-sizing: border-box;
     /*cursor:pointer;*/
     opacity: 0.8;
+    margin: 2px;
 }
 .overlay:hover {
     opacity: 0.9;
