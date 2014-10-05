@@ -13,9 +13,7 @@ playlist.playlistView = function(data, containerDiv) {
     this.data = data;
     $(containerDiv).append(this.elem);
     for (track in this.data) {
-    //     this.addSong(this.data[track].uri);
-            this.render(this.data[track]);
-
+        this.render(this.data[track]);
     }
     //this.render();
 
@@ -28,9 +26,18 @@ playlist.playlistView = function(data, containerDiv) {
             }
         }
     });
-    debugger
-    $("body").delegate('.delete_song', 'click', function(e) {
-        console.log('click');
+    $(this.elem).delegate('.delete_song', 'click', function(e) {
+        // var data = $(e.target).parent().parent().data();
+        var id = $(e.target).parent().attr('id');
+        $(e.target).parent().parent().fadeOut(500);
+        that.data.splice(id, 1);
+        $.ajax({
+        url: '/addTrack',
+        data: {
+            'name': $('#playlist_list .active').text().trim(),
+            'tracks': JSON.stringify(that.data)
+        }
+        })
     });
 }
 
@@ -38,7 +45,10 @@ playlist.playlistView.prototype.render = function(song) {
     var playersList = [];
 
     var that = this;
-    var spans = "<span class='trackName'></span><span class='trackArtist'></span><span class='timer'></span><span class='delete_song'></span><span class='delete_song'></span>";
+    var spans = "<span class='trackName'></span>"+
+                "<span class='trackArtist'></span>"+
+                "<span class='timer'></span><span class='delete_song'></span>"+
+                "<span class='delete_song'></span>";
     
     switch (song.type) {
         case "spotify":
@@ -102,6 +112,15 @@ playlist.playlistView.prototype.addSong = function(song) {
         data: {
             'name': $('#playlist_list .active').text().trim(),
             'tracks': JSON.stringify(this.data)
+        }
+    })
+}
+playlist.playlistView.prototype.removeSong = function(song) {
+    $.ajax({
+        url: '/removeTrack', 
+        data: {
+            'name': $('#playlist_list .active').text().trim(),
+             'uri': song
         }
     })
 }

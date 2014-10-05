@@ -29,6 +29,7 @@ players.youtubePlayer.prototype.appendTo = function(elem) {
 	$(li).html(this.overlay);
 	$(li).append(this.elem);
     $(elem).append(li);
+    $(li).data('url', this.url);
 
 	var that = this;
 	$(this.overlay).click(

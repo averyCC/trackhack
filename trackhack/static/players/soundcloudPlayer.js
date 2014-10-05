@@ -31,6 +31,7 @@ players.soundcloudPlayer.prototype.appendTo = function(elem) {
 
     $(li).html(this.overlay);
     $(li).append(this.elem);
+    $(li).data('url', this.url);
     $(elem).append(li);
 
     var that = this;

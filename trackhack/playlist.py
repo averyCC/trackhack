@@ -21,3 +21,8 @@ def addPlaylist():
 	if not mongo.playlists.find_one({'name': name}):
 		mongo.playlists.insert({'name': name, 'tracks': []})
 	return jsonify(success='success')
+
+@app.route("/removeSong", methods=['GET'])
+def removeSong():
+	uri = request.args['uri']
+	name = request.args['name']

@@ -39,6 +39,8 @@ players.spotifyPlayer.prototype.appendTo = function(elem) {
 	var li = document.createElement("li");
 	$(li).html(this.overlay);
 	$(li).append(this.elem);
+	$(li).data('url', this.url);
+
     $(elem).append(li);
 	var that = this;
 	$(this.elem).click(function() {
