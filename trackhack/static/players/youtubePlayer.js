@@ -20,9 +20,10 @@ players.youtubePlayer = function(url, id) {
 		id: this._id
 	} );
 	$(this.overlay).css('background-color', '#c31320');	
-	$(this.elem).css("z-index", "3");
-	$(this.elem).css("position", "absolute");
-	$(this.overlay).css("top","0px");
+	this.elem.css("z-index", "3");
+	this.elem.css("position", "absolute");
+	this.elem.css("top", "2px");
+	// $(this.overlay).css("top","0px");
 
 }
 
