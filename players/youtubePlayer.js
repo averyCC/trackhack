@@ -21,9 +21,7 @@ players.youtubePlayer = function(url, id) {
 	this.overlay = $('<div/>',{
 		class: 'overlay'
 	} )
-	$(this.overlay).css('background-color', '#c31320');
-
-	
+	$(this.overlay).css('background-color', '#c31320');	
 }
 
 players.youtubePlayer.prototype.appendTo = function(elem) {

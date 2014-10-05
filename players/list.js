@@ -12,12 +12,15 @@ playlist.playlistView = function(data, containerDiv) {
 
 playlist.playlistView.prototype.render = function() {
     $(this.elem).empty();
+    var spans = "<span class='trackName'></span><span class='trackArtist'></span><span class='timer'></span>";
+
     for (track in this.data) {
         song = this.data[track];
         switch (song.type) {
             case "spotify":
                 var spotifyPlayer = new players.spotifyPlayer(song.uri, this.id++);
                 spotifyPlayer.appendTo(this.elem);
+                $(spotifyPlayer.overlay).append(spans);
                 break;
             case "youtube":
                 var youtubePlayer = new players.youtubePlayer(song.uri, this.id++);
