@@ -12,20 +12,26 @@ iframe {
     height: 80px;
     width: 100%;
     background-color: #BADA55;
-    z-index: 2;
+    /*z-index: 2;*/
     margin-bottom:5px;
     box-sizing: border-box;
-    cursor:pointer;
+    /*cursor:pointer;*/
+    opacity: 0.8;
+}
+.overlay:hover {
+    opacity: 0.9;
 }
 
 .overlay .trackArtist {
     float:left;
     clear:both;
+    margin-left: 80px;
     font-style: italic;
 
 }
 
 .overlay .trackName {
+    margin-left: 80px;
     float:left;
     font-weight: 600;
 }

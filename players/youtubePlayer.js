@@ -10,7 +10,7 @@ players.youtubePlayer = function(url, id) {
 	this.elem = $('<object/>', {
 	    id: this._id,
 	    type: "application/x-shockwave-flash",
-	    width: "100%",
+	    width: "80px",
 	    height: "80px",
 	    frameborder:"0",
 	    allowtransparency:"true"
@@ -18,7 +18,8 @@ players.youtubePlayer = function(url, id) {
 	$(this.elem).attr('data', url + "?enablejsapi=1&amp;playerapiid=ytplayer&amp;version=3");
 	$(this.elem).html('<param name="allowScriptAccess" value="always">');
 	this.overlay = $('<div/>',{
-		class: 'overlay'
+		class: 'overlay',
+		id: this._id
 	} )
 	$(this.overlay).css('background-color', '#c31320');	
 }
@@ -42,7 +43,15 @@ players.youtubePlayer.prototype.dataLookup = function() {
 	var uid = split[split.length-1];
 	var that = this;
 	$.getJSON('http://gdata.youtube.com/feeds/api/videos/'+uid+'?v=2&alt=jsonc', function(data) {
-		console.log(data);
+		$('<img/>', {
+			src: data.data.thumbnail.sqDefault
+		}).css({'float': 'left',
+				'width': '80px', 
+				'height': '80px',
+				'opacity': 1,
+				'margin-left': '-10px',
+				'margin-top': '-10px',
+				'position': 'absolute'}).prependTo(that.overlay);
 		$(that.overlay).find('.trackName').text(data.data.title);
 		var time = Math.floor(data.data.duration/ 60) + ':' + (data.data.duration/60 %1 * 60).toFixed(0);
 		$(that.overlay).find('.timer').text(time);
@@ -52,6 +61,7 @@ players.youtubePlayer.prototype.dataLookup = function() {
 }
 players.youtubePlayer.prototype.play = function() {
 	$(this.elem)[0].playVideo();
+	window.nowPlaying = this._id;
 	this._isPlaying = true;
 }
 players.youtubePlayer.prototype.pause = function() {
