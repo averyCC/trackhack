@@ -2,10 +2,17 @@
  var list;
  window.playlist = list;
 
+
+
  $(function() {
-     $.getJSON('./test.json', function(data) {
-         list = new playlist.playlistView(data, '#playlist_wrapper');
-     });
+    $.ajax({
+        url: '/loadPlaylist', 
+        data: {'name': 'playlist1'},
+        success: function(data) {
+            list = new playlist.playlistView(data.playlist, '#playlist_wrapper');
+        }
+    });
+     
 
      $('#add_song_button').click(function(e) {
          $("#add").hide();
