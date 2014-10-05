@@ -1,11 +1,13 @@
- 
-
-$(function() {
+ $(function() {
  	var list;
     $.getJSON('./test.json', function(data) {
         list = new playlist.playlistView(data, '#playlist_wrapper');
     });
-    console.log("ho");
+                  $("#playlist_wrapper").append("<div id='swfLoop'></div>");
+
+              
+
+
 
     $('#add_song_button').click(function(e) {
      	$("#add").hide();
