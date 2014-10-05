@@ -20,6 +20,7 @@ players.spotifyPlayer = function(url, id) {
 	} );
 	$(this.overlay).css({'background-color': '#80bc42'});
 	this.dataLookup();
+	this.elem.css("top","2px");
 
 }
 

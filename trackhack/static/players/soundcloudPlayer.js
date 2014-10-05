@@ -9,8 +9,7 @@ players.soundcloudPlayer = function(url, id) {
 
     this.elem = $('<object/>', {
         id: this._id,
-        width: "80px",
-        height: "80px",
+        
         classid: "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
     });
     this.overlay = $('<div/>', {
@@ -18,9 +17,13 @@ players.soundcloudPlayer = function(url, id) {
         id: this._id
     })
 
-
     $(this.overlay).css('background-color', '#f64c0e');
-
+    this.elem.css("position","absolute");
+    this.elem.css("width","100%");
+    this.elem.css("top","2px");
+    this.elem.css("left","2px");
+    $(this.overlay).css('z-index', '2');
+    this.elem.css("top","4px");
 
 }
 
@@ -28,7 +31,6 @@ players.soundcloudPlayer.prototype.appendTo = function(elem) {
 
     $(this.overlay).css('pointer-events', 'all');
     var li = document.createElement("li");
-
     $(li).html(this.overlay);
     $(li).append(this.elem);
     $(li).data('url', this.url);
@@ -37,7 +39,7 @@ players.soundcloudPlayer.prototype.appendTo = function(elem) {
     var that = this;
     $(this.elem).html('<param name="allowscriptaccess" value="always"></param>' +
         '<embed allowscriptaccess="always" ' +
-        'height="80" ' +
+        'height="78"' +
         'src="http://player.soundcloud.com/player.swf?url=' + this.url + '&enable_api=true&object_id=' + this._id + '" ' +
 
         'type="application/x-shockwave-flash" width="100%" name="' + this._id + '"></embed>'
