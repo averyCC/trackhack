@@ -8,12 +8,12 @@ playlist.playlistView = function(data, containerDiv) {
     this.playersList = [];
 
     this.elem = $('<div/>', {
-        id: 'playlist_wrapper'
+        id: 'playlist'
     });
     this.data = data;
     $(containerDiv).append(this.elem);
     for (track in this.data) {
-        this.addSong(track);
+        this.addSong(this.data[track].uri);
     }
     //this.render();
     var that = this;
@@ -27,17 +27,19 @@ playlist.playlistView = function(data, containerDiv) {
     });
 }
 
-playlist.playlistView.prototype.render = function() {
-    $(this.elem).empty();
+playlist.playlistView.prototype.render = function(song) {
+    // $(this.elem).empty();
     var playersList = [];
     console.log("id:");
     console.log(this.id);
     //this.id = 0;
+ 
     var that = this;
     var spans = "<span class='trackName'></span><span class='trackArtist'></span><span class='timer'></span>";
-    for (track in this.data) {
+    // for (track in this.data) {
         console.log(track);
-        song = this.data[track];
+        // song = this.data[track];
+        // song = this.data[this.data.length -1];
         console.log("hi");
         console.log(this.elem);
         switch (song.type) {
@@ -64,7 +66,7 @@ playlist.playlistView.prototype.render = function() {
             default:
                 break;
         }
-    }
+    // }
     this.playersList = playersList;
 }
 
@@ -76,6 +78,8 @@ playlist.playlistView.prototype.renderCur = function() {
 }
 playlist.playlistView.prototype.addSong = function(song) {
     var insert;
+        debugger
+
     if (song.split(':')[0] == "spotify") {
         insert = {
             "type": "spotify",
@@ -95,7 +99,7 @@ playlist.playlistView.prototype.addSong = function(song) {
         }
     }
     this.data[this.id] = insert;
-    this.render();
+    this.render(insert);
     $.ajax({
         url: '/addTrack',
         data: {'name': $('#playlist_list .active').text().trim(), 

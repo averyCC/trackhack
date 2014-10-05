@@ -12,7 +12,7 @@ function loadPlaylist() {
             'name': $('#playlist_list .active').text().trim()
         },
         success: function(data) {
-            $('#playlist_wrapper').empty();
+            $('#playlist').empty();
             list = new playlist.playlistView(data.playlist, '#playlist_wrapper');
         }
     });
