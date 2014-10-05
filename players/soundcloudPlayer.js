@@ -1,4 +1,5 @@
 var players = window.players || {};
+var nowPlaying = window.nowPlaying || {};
 
 players.soundcloudPlayer = function(url, id) {
 	console.log("soundcloud player", url);
@@ -62,6 +63,7 @@ players.soundcloudPlayer.prototype.dataLookup = function() {
 
 players.soundcloudPlayer.prototype.play = function() {
 	soundcloud.getPlayer(this._id).api_play()
+	window.nowPlaying = this._id;
 	this._isPlaying = true;
 }
 players.soundcloudPlayer.prototype.pause = function() {

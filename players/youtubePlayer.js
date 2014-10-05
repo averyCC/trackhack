@@ -10,8 +10,6 @@ players.youtubePlayer = function(url, id) {
 	this.elem = $('<object/>', {
 	    id: this._id,
 	    type: "application/x-shockwave-flash",
-	    // data: url + "?enablejsapi=1&amp;playerapiid=ytplayer&amp;version=3",
-
 	    width: "100%",
 	    height: "80px",
 	    frameborder:"0",
@@ -27,7 +25,6 @@ players.youtubePlayer = function(url, id) {
 
 players.youtubePlayer.prototype.appendTo = function(elem) {
 	$(elem).append(this.overlay);
-	$(this.overlay).text(this.url);
 	$(this.overlay).css('pointer-events', 'all');
 	$(elem).append(this.elem);
 	var that = this;
@@ -36,8 +33,23 @@ players.youtubePlayer.prototype.appendTo = function(elem) {
 			if (that._isPlaying) {that.pause();}
 			else {that.play();}
 	});
+	this.dataLookup();
 }
 
+
+players.youtubePlayer.prototype.dataLookup = function() {
+	var split = this.url.split('/');
+	var uid = split[split.length-1];
+	var that = this;
+	$.getJSON('http://gdata.youtube.com/feeds/api/videos/'+uid+'?v=2&alt=jsonc', function(data) {
+		console.log(data);
+		$(that.overlay).find('.trackName').text(data.data.title);
+		var time = Math.floor(data.data.duration/ 60) + ':' + (data.data.duration/60 %1 * 60).toFixed(0);
+		$(that.overlay).find('.timer').text(time);
+		$(that.overlay).find('.trackArtist').text(data.data.uploader);
+
+	});
+}
 players.youtubePlayer.prototype.play = function() {
 	$(this.elem)[0].playVideo();
 	this._isPlaying = true;

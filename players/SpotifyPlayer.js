@@ -38,6 +38,7 @@ players.spotifyPlayer.prototype.appendTo = function(elem) {
 	var that = this;
 	$(this.overlay).click(function() {
 						window.open(that.url, "_parent");
+						window.nowPlaying = this._id;
 					});
 	$(elem).append(this.elem);
 }
