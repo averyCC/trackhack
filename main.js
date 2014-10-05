@@ -5,12 +5,9 @@
      })
 
      $('#click').click(function(e) {
-
          var input = $('input').val().trim();
-         // var spotifyPlayer = new players.spotifyPlayer(input, 1);
-         // spotifyPlayer.appendTo('body');
          list.addSong(input);
      });
 
-    
+
  });
