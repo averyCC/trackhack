@@ -46,6 +46,3 @@ players.youtubePlayer.prototype.pause = function() {
 	$(this.elem)[0].pauseVideo();
 	this._isPlaying = false;
 }
-// <object type="application/x-shockwave-flash" id="js-player-inner" 
-// data="http://www.youtube.com/v/AbPED9bisSc"style="visibility: visible;">
-// <param name="allowScriptAccess" value="always"></object>
