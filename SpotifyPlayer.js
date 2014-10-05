@@ -22,6 +22,10 @@ players.spotifyPlayer = function(url, id) {
 
 players.spotifyPlayer.prototype.appendTo = function(elem) {
 	$(elem).append(this.overlay);
-	$(this.overlay).text(this.url);
+	var that = this;
+	$(this.overlay).text(this.url)
+					.click(function() {
+						window.open(that.url, "_parent");
+					});
 	$(elem).append(this.elem);
 }
