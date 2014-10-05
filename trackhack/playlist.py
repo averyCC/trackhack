@@ -18,5 +18,6 @@ def addTrack():
 @app.route("/addPlaylist", methods=['GET'])
 def addPlaylist():
 	name = request.args['name']
-	mongo.playlists.insert({'name': name})
+	if not mongo.playlists.find_one({'name': name}):
+		mongo.playlists.insert({'name': name, 'tracks': []})
 	return jsonify(success='success')

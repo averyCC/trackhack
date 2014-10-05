@@ -1,18 +1,16 @@
 {
-	"songone": {
-		"type": "spotify",
-		"uri": "spotify:track:4RL77hMWUq35NYnPLXBpih"
-	},
-	"songtwo": {
-		"type": "spotify", 
-		"uri": "spotify:track:4dI4oscajpdtjpg2dP1x28"
-	},
-	"songfour": {
-		"type": "youtube", 
-		"uri": "http://www.youtube.com/v/AbPED9bisSc"
-	},
-	"songthree": {
-		"type": "soundcloud",
-		"uri": "https://soundcloud.com/whitepandamusic/midnight-life"
-	}
+	"name": "test",
+    "tracks": [{
+        "type": "spotify",
+        "uri": "spotify:track:4RL77hMWUq35NYnPLXBpih"
+    }, {
+        "type": "spotify",
+        "uri": "spotify:track:4dI4oscajpdtjpg2dP1x28"
+    }, {
+        "type": "youtube",
+        "uri": "http://www.youtube.com/v/AbPED9bisSc"
+    }, {
+        "type": "soundcloud",
+        "uri": "https://soundcloud.com/whitepandamusic/midnight-life"
+    }]
 }
