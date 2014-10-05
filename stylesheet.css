@@ -88,6 +88,7 @@ td{
 	width: 100%;
 	opacity: 0.6;
 	z-index: -1;
+
 }
 
 
@@ -106,7 +107,7 @@ td{
 	color: #ffcc00;
 }
 
-ul{
+#playlist_list ul, #friend_list ul{
 	position: absolute;
 	left: 20px;
 	margin: 0;
@@ -119,11 +120,15 @@ ul{
 	left: 33px;
 }
 
+ul{
+	list-style-type: none;
+}
+
 #playlist_list .addButton{
 	left: 33px;
 }
 
-li{
+#friends_list li, #playlist_list li{
 	padding-bottom: 10px;
 	width: 125px;
 	height: 15px;
@@ -131,6 +136,10 @@ li{
     text-overflow:ellipsis;
 	overflow: hidden;
 	position: relative;
+}
+
+li{
+
 }
 
 #playlist_list span{
@@ -164,13 +173,14 @@ li{
 	min-height: 300px;
 	min-width: 400px;
 	position: absolute;
-	left: 20px;
 	right: 0;
+	left: 20px;
 	top: 70px;
 	bottom: 0;
 	margin-right: 20px;
 	margin-bottom: 20px;
 	overflow-y: auto;
+	padding: 0px;
 }
 
 #album_cover_gradient{

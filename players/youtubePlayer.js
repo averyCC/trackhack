@@ -1,7 +1,6 @@
 var players = window.players || {};
 
 players.youtubePlayer = function(url, id) {
-	console.log("youtube player", url);
 	this.url = url;
 	this._id = id;
 	this._isPlaying = false;
@@ -25,9 +24,11 @@ players.youtubePlayer = function(url, id) {
 }
 
 players.youtubePlayer.prototype.appendTo = function(elem) {
-	$(elem).append(this.overlay);
-	$(this.overlay).css('pointer-events', 'all');
-	$(elem).append(this.elem);
+	var li = document.createElement("li");
+	$(li).html(this.overlay);
+	$(li).append(this.elem);
+    $(elem).append(li);
+
 	var that = this;
 	$(this.overlay).click(
 		function() {
@@ -46,16 +47,20 @@ players.youtubePlayer.prototype.dataLookup = function() {
 		$('<img/>', {
 			src: data.data.thumbnail.sqDefault
 		}).css({'float': 'left',
-				'width': '80px', 
-				'height': '80px',
+				'width': '81px', 
+				'height': '81px',
 				'opacity': 1,
 				'margin-left': '-10px',
 				'margin-top': '-10px',
-				'position': 'absolute'}).prependTo(that.overlay);
+				'position': 'absolute',
+				'display': 'none'}
+				).prependTo(that.overlay);
 		$(that.overlay).find('.trackName').text(data.data.title);
+		$(that.overlay).find('.trackName').css("margin-left", "85px");
 		var time = Math.floor(data.data.duration/ 60) + ':' + (data.data.duration/60 %1 * 60).toFixed(0);
 		$(that.overlay).find('.timer').text(time);
 		$(that.overlay).find('.trackArtist').text(data.data.uploader);
+		$(that.overlay).find('.trackArtist').css("margin-left", "85px");
 
 	});
 }

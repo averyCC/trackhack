@@ -12,7 +12,10 @@ playlist.playlistView = function(data, containerDiv) {
     });
     this.data = data;
     $(containerDiv).append(this.elem);
-    this.render();
+    for (track in this.data) {
+        this.addSong(track);
+    }
+    //this.render();
     var that = this;
     $('#playlist_wrapper').click(function() {
         that.renderCur();
@@ -22,16 +25,23 @@ playlist.playlistView = function(data, containerDiv) {
             }
         }
     });
+
+    console.log(this.playersList);
 }
 
 playlist.playlistView.prototype.render = function() {
     $(this.elem).empty();
     var playersList = [];
-    this.id = 0;
+    console.log("id:");
+    console.log(this.id);
+    //this.id = 0;
     var that = this;
     var spans = "<span class='trackName'></span><span class='trackArtist'></span><span class='timer'></span>";
     for (track in this.data) {
+        console.log(track);
         song = this.data[track];
+        console.log("hi");
+        console.log(this.elem);
         switch (song.type) {
             case "spotify":
                 var spotifyPlayer = new players.spotifyPlayer(song.uri, this.id++);
@@ -67,7 +77,8 @@ playlist.playlistView.prototype.renderCur = function() {
 
 }
 playlist.playlistView.prototype.addSong = function(song) {
-
+   console.log("< : ");
+   console.log(this.id);
     if (song.split(':')[0] == "spotify") {
         this.data[this.id] = {
             "type": "spotify",

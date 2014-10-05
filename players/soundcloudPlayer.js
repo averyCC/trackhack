@@ -18,16 +18,24 @@ players.soundcloudPlayer = function(url, id) {
         class: 'overlay',
         id: this._id
     })
+
+
     $(this.overlay).css('background-color', '#f64c0e');
 
 
 }
 
 players.soundcloudPlayer.prototype.appendTo = function(elem) {
-    $(elem).append(this.overlay);
+    //$(elem).append(this.overlay);
     // $(this.overlay).text(this.url);
     $(this.overlay).css('pointer-events', 'all');
-    $(elem).append(this.elem);
+    //$(elem).append(this.elem);
+    var li = document.createElement("li");
+
+    $(li).html(this.overlay);
+    $(li).append(this.elem);
+    $(elem).append(li);
+
     var that = this;
     $(this.elem).html('<param name="allowscriptaccess" value="always"></param>' +
         '<embed allowscriptaccess="always" ' +
