@@ -36,17 +36,11 @@ players.spotifyPlayer.prototype.dataLookup = function() {
 }
 
 players.spotifyPlayer.prototype.appendTo = function(elem) {
-	//$(elem).append(this.overlay);
 	var li = document.createElement("li");
 	$(li).html(this.overlay);
 	$(li).append(this.elem);
-	// $("#playlist_wrapper").html("");
     $(elem).append(li);
 	var that = this;
-	//$(elem).append(this.elem);
-	// var li = document.createElement("li");
-	// $(li).html(this.elem)
-	// $("#playlist_wrapper").append(li);
 	$(this.elem).click(function() {
 		window.nowPlaying = this._id
 	});

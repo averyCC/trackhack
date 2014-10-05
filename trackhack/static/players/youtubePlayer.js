@@ -5,7 +5,6 @@ players.youtubePlayer = function(url, id) {
 	this._id = id;
 	this._isPlaying = false;
 
-	// this.elem = '<iframe src="https://embed.spotify.com/?uri='+input+'&output=embed" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>'
 	this.elem = $('<object/>', {
 	    id: this._id,
 	    type: "application/x-shockwave-flash",
@@ -21,6 +20,7 @@ players.youtubePlayer = function(url, id) {
 		id: this._id
 	} )
 	$(this.overlay).css('background-color', '#c31320');	
+
 }
 
 players.youtubePlayer.prototype.appendTo = function(elem) {

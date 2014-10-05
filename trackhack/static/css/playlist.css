@@ -45,4 +45,5 @@ iframe {
 #playlist_wrapper li{
     height: 80px;
     position: relative;
+    margin: 2px;
 }
