@@ -5,6 +5,7 @@ players.spotifyPlayer = function(url, id) {
 	this.url = url;
 	this._id = id;
 
+
 	this.elem = $('<iframe/>', {
 	    id: this._id,
 	    src: 'https://embed.spotify.com/?uri=' + url + '&output=embed',

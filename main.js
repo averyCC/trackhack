@@ -4,8 +4,8 @@
          list = new playlist.playlistView(data, '#playlist_wrapper');
      })
 
-     $('#click').click(function(e) {
-         var input = $('input').val().trim();
+     $('#add_song_button').click(function(e) {
+         var input = $('#new_song').val().trim();
          list.addSong(input);
      });
  });
