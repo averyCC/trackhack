@@ -34,7 +34,11 @@ playlist.playlistView.prototype.render = function() {
                 var soundcloudPlayer = new players.soundcloudPlayer(song.uri, this.id++);
                 soundcloudPlayer.appendTo(this.elem);
                 $(soundcloudPlayer.overlay).append(spans);
-
+                break;
+            case "grooveshark":
+                var groovesharkPlayer = new players.groovesharkPlayer(song.uri, this.id++);
+                groovesharkPlayer.appendTo(this.elem);
+                break;
             default:
                 break;
         }
@@ -42,6 +46,7 @@ playlist.playlistView.prototype.render = function() {
 }
 
 playlist.playlistView.prototype.addSong = function(song) {
+
     if (song.split(':')[0] == "spotify") {
         this.data[this.id] = {
             "type": "spotify",
@@ -53,9 +58,15 @@ playlist.playlistView.prototype.addSong = function(song) {
             "type": "youtube",
             "uri": uri
         }
+        console.log(uri);
     } else if (song.indexOf("soundcloud") !== -1) {
         this.data[this.id] = {
             "type": "soundcloud",
+            "uri": song
+        }
+    } else if (song.indexOf("grooveshark") !== -1){
+        this.data[this.id] = {
+            "type": "grooveshark",
             "uri": song
         }
     }
