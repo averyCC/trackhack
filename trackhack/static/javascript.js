@@ -5,6 +5,19 @@ function resize(){
 	$("#playlist_wrapper").css("min-width", size+"px");
 }
 
+ function loadPlaylist() {
+     $.ajax({
+         url: '/loadPlaylist',
+         data: {
+             'name': $('#playlist_list .active').text().trim()
+         },
+         success: function(data) {
+            $('#playlist_wrapper').empty();
+             list = new playlist.playlistView(data.playlist, '#playlist_wrapper');
+         }
+     });
+ }
+
 function submit(){
 
 	var text = $("#new_playlist").val();
@@ -56,6 +69,8 @@ $(document).ready(function() {
   			$("#playlist_list .active").removeClass("active");
   			$(this).addClass("active");
   			$("#playlist_name").text($(this).children(":first").html());
+        console.log('hi');
+        loadPlaylist();
   			resize();
   		}
   	});

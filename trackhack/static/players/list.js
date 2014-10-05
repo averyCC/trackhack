@@ -25,8 +25,6 @@ playlist.playlistView = function(data, containerDiv) {
             }
         }
     });
-
-    console.log(this.playersList);
 }
 
 playlist.playlistView.prototype.render = function() {
@@ -77,30 +75,31 @@ playlist.playlistView.prototype.renderCur = function() {
 
 }
 playlist.playlistView.prototype.addSong = function(song) {
-   console.log("< : ");
-   console.log(this.id);
+    var insert;
     if (song.split(':')[0] == "spotify") {
-        this.data[this.id] = {
+        insert = {
             "type": "spotify",
             "uri": song
         }
     } else if (song.indexOf("youtube") !== -1) {
         var uri = "http://www.youtube.com/v/" + song.split("=")[1];
-        this.data[this.id] = {
+        insert = {
             "type": "youtube",
             "uri": uri
         }
         console.log(uri);
     } else if (song.indexOf("soundcloud") !== -1) {
-        this.data[this.id] = {
+        insert = {
             "type": "soundcloud",
             "uri": song
         }
-    } else if (song.indexOf("grooveshark") !== -1){
-        this.data[this.id] = {
-            "type": "grooveshark",
-            "uri": song
-        }
     }
+    this.data[this.id] = insert;
     this.render();
+    $.ajax({
+        url: '/addTrack',
+        data: {'name': $('#playlist_list .active').text().trim(), 
+            'tracks': JSON.stringify(this.data)    
+        }  
+    })
 }
