@@ -12,8 +12,7 @@ def loadPlaylist():
 def addTrack():
 	name = request.args['name']
 	tracks = request.args['tracks']
-
-	mongo.playlists.update({'name': name}, {'tracks': json.loads(tracks)})
+	mongo.playlists.update({'name': name}, {'$set': {"tracks": json.loads(tracks)}})
 	return jsonify(success='success')
 
 @app.route("/addPlaylist", methods=['GET'])
