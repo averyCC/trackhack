@@ -18,16 +18,18 @@ players.youtubePlayer = function(url, id) {
 	this.overlay = $('<div/>',{
 		class: 'overlay',
 		id: this._id
-	} )
-	// $(this.elem).css("display","hidden");
+	} );
 	$(this.overlay).css('background-color', '#c31320');	
+	$(this.elem).css("z-index", "3");
+	$(this.elem).css("position", "absolute");
+	$(this.overlay).css("top","0px");
 
 }
 
 players.youtubePlayer.prototype.appendTo = function(elem) {
 	var li = document.createElement("li");
-	$(li).html(this.overlay);
-	$(li).append(this.elem);
+	$(li).html(this.elem);
+	$(li).append(this.overlay);
     $(elem).append(li);
 
 	var that = this;
