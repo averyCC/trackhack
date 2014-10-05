@@ -8,6 +8,4 @@
          var input = $('input').val().trim();
          list.addSong(input);
      });
-
-
  });

@@ -44,6 +44,3 @@ players.soundcloudPlayer.prototype.pause = function() {
 	widget.pause();	
 	this._isPlaying = false;
 }
-// <object type="application/x-shockwave-flash" id="js-player-inner" 
-// data="http://www.youtube.com/v/AbPED9bisSc"style="visibility: visible;">
-// <param name="allowScriptAccess" value="always"></object>
