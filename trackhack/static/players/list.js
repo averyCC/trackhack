@@ -8,7 +8,7 @@ playlist.playlistView = function(data, containerDiv) {
     this.playersList = [];
 
     this.elem = $('<div/>', {
-        class: 'playlist'
+        id: 'playlist_wrapper'
     });
     this.data = data;
     $(containerDiv).append(this.elem);

@@ -10,10 +10,14 @@ def loadPlaylist():
 
 @app.route("/addTrack", methods=['GET'])
 def addTrack():
-	import pdb
-	pdb.set_trace()
 	name = request.args['name']
 	tracks = request.args['tracks']
 
 	mongo.playlists.insert({'name': name, 'tracks': json.loads(tracks)})
+	return jsonify(success='success')
+
+@app.route("/addPlaylist", methods=['GET'])
+def addPlaylist():
+	name = request.args['name']
+	mongo.playlists.insert({'name': name})
 	return jsonify(success='success')
