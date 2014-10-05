@@ -36,8 +36,6 @@ function submit(){
 }
 
 function submit_song(){
-	$("#add").hide();
-	$("#new_song").val("");
 }
 
 $(document).ready(function() {
@@ -117,17 +115,6 @@ $(document).ready(function() {
 	  		$("#add").hide();
 	  	}
   	});
-
-  	$("#new_song").keypress(function(e){
-		if (e.which==13){
-			submit_song();
-		}
-	});
-
-	$("#add_song_button").click(function(){
-		submit_song();
-	});
-
 
 
 });
