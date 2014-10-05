@@ -19,6 +19,7 @@ players.youtubePlayer = function(url, id) {
 		class: 'overlay',
 		id: this._id
 	} )
+	// $(this.elem).css("display","hidden");
 	$(this.overlay).css('background-color', '#c31320');	
 
 }

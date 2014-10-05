@@ -28,13 +28,18 @@ playlist.playlistView = function(data, containerDiv) {
             }
         }
     });
+    debugger
+    $("body").delegate('.delete_song', 'click', function(e) {
+        console.log('click');
+    });
 }
 
 playlist.playlistView.prototype.render = function(song) {
     var playersList = [];
 
     var that = this;
-    var spans = "<span class='trackName'></span><span class='trackArtist'></span><span class='timer'></span>";
+    var spans = "<span class='trackName'></span><span class='trackArtist'></span><span class='timer'></span><span class='delete_song'></span><span class='delete_song'></span>";
+    
     switch (song.type) {
         case "spotify":
             var spotifyPlayer = new players.spotifyPlayer(song.uri, this.id++);
@@ -59,6 +64,7 @@ playlist.playlistView.prototype.render = function(song) {
         default:
             break;
     }
+
     this.playersList = playersList;
 }
 

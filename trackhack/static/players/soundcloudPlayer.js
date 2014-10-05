@@ -7,7 +7,6 @@ players.soundcloudPlayer = function(url, id) {
     this._id = id;
     this._isPlaying = false;
 
-    // this.elem = '<iframe src="https://embed.spotify.com/?uri='+input+'&output=embed" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>'
     this.elem = $('<object/>', {
         id: this._id,
         width: "80px",
@@ -26,10 +25,8 @@ players.soundcloudPlayer = function(url, id) {
 }
 
 players.soundcloudPlayer.prototype.appendTo = function(elem) {
-    //$(elem).append(this.overlay);
-    // $(this.overlay).text(this.url);
+
     $(this.overlay).css('pointer-events', 'all');
-    //$(elem).append(this.elem);
     var li = document.createElement("li");
 
     $(li).html(this.overlay);
