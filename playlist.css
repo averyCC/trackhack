@@ -1,0 +1,14 @@
+iframe {
+        display: block;
+        clear: both;
+        position: relative;
+    }
+.overlay {
+    display: block;
+    clear: both;
+    position: absolute;
+    height: 80px;
+    width: 100%;
+    background-color: #BADA55;
+    z-index: 2;
+}
