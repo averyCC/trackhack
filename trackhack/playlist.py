@@ -26,3 +26,4 @@ def addPlaylist():
 def removeSong():
 	uri = request.args['uri']
 	name = request.args['name']
+	mongo.playlists.update({'name':name}, )

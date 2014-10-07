@@ -3,6 +3,7 @@ body{
 	font-family: helvetica;
 	color: white;
 	font-weight: lighter;
+	cursor:default;
 }
 
 #header{
@@ -150,7 +151,7 @@ li{
 	overflow: hidden;
 }
 
-#playlist_list span:hover{
+#playlist_list span:hover, #friend_list li:hover{
 	color: #5a5957;
 }
 

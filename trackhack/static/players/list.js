@@ -49,7 +49,7 @@ playlist.playlistView.prototype.render = function(song) {
                 "<span class='trackArtist'></span>"+
                 "<span class='timer'></span><span class='delete_song'></span>"+
                 "<span class='delete_song'></span>";
-    
+    //WILL NEED TO RESET SONGS WHEN FINISH.
     switch (song.type) {
         case "spotify":
             var spotifyPlayer = new players.spotifyPlayer(song.uri, this.id++);
