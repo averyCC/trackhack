@@ -1,1 +1,0 @@
-from trackhack import app, mongo

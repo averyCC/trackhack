@@ -26,8 +26,18 @@
     </div> -->
 </head>
 <body>
+<script>
+        document.getElementById('logout').onclick = function() {
+            FB.logout(function(response) { });
+        };
+    </script>
+
+
 <div id="header">
     trackhack
+        <div id="logout">
+            logout
+        </div>
     <div id="currently_playing">
         currently playing : <span id="curTrack"></span>
         <br>
